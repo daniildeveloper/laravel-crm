@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 return [
 
@@ -151,6 +151,7 @@ return [
          * Package Service Providers...
          */
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
+        Nvd\Crud\Providers\NvdCrudServiceProvider::class,
 
         /*
          * Application Service Providers...
