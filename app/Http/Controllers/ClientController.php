@@ -12,12 +12,14 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $clients = Client::paginate(30);
 
         return view('clients.index', [
             'clients' => $clients,
+            'alert' => __($request->alert),
+            'alert_level' => $request->alert_level,
         ]);
     }
 
@@ -47,7 +49,10 @@ class ClientController extends Controller
         $client->email = $request->email;
         $client->save();
 
-        return redirect()->route('client.index');
+        return redirect()->route('client.index', [
+            'alert'       => __('alert.client.created'),
+            'alert_level' => 'success',
+        ]);
     }
 
     /**
@@ -91,7 +96,7 @@ class ClientController extends Controller
         $client->notes = $request->notes;
         $client->save();
 
-        return view('clients.edit', ['client' => $client]);
+        return view('clients.edit', ['client' => $client, 'alert' => __('alert.client.updated')]);
     }
 
     /**
@@ -104,6 +109,8 @@ class ClientController extends Controller
     {
         Client::findOrFail($id)->delete();
 
-        return redirect()->back();
+        return redirect()->back([
+            'alert' => __('alert.client.deleted')
+        ]);
     }
 }

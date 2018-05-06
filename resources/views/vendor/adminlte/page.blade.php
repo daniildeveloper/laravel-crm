@@ -107,6 +107,27 @@
             <div class="container">
             @endif
 
+            @if(isset($alert))
+            <section class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="alert alert-{{isset($alert_level) ? $alert_level : 'info'}} alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h4>{{$alert}}</h4>
+                            
+                            {{-- alert text --}}
+                            @if(isset($alert_text))
+                                {{$alert_text}}
+                            @endif
+                            {{-- end alert text --}}
+                          </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </section>
+                
+            @endif
+
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 @yield('content_header')
