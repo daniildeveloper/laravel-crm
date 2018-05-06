@@ -114,13 +114,6 @@ return [
             'url'  => 'admin/client',
             'icon' => 'user'
         ],
-        [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
     ],
 
     /*
