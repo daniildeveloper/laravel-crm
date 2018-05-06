@@ -16,7 +16,7 @@ class ClientController extends Controller
     {
         $clients = Client::paginate(30);
 
-        return view('', [
+        return view('clients.create', [
             'clients' => $client
         ]);
     }
