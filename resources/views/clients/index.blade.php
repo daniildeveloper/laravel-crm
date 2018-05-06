@@ -29,15 +29,25 @@
                 <tbody>
                 @foreach($clients as $client)
                     <tr>
-                      <td>{{ $client->name }}</td>
-                      <td>
-                        {{ $client->phone }}
-                      </td>
-                      <td>{{ $client->email }}</td>
-                      <td>
-                          <a href="{{ route('client.edit', $client->id)}}" class="btn btn-success">
-                              <i class="fa fa-edit"></i>
-                          </a>
+                        <td>{{ $client->name }}</td>
+                        <td>
+                          {{ $client->phone }}
+                        </td>
+                        <td>{{ $client->email }}</td>
+                        <td>
+                          <div style="display: inline-block;">
+                            <form method="POST" action="{{ route('client.destroy', ['id' => $client->id])}}">
+                                <input type="hidden" name="_method" value="DELETE">
+                                {{ csrf_field() }}
+                              <a href="{{ route('client.edit', $client->id)}}" class="btn btn-small btn-success">
+                                  <i class="fa fa-edit"></i>
+                              </a>
+                              <button class="btn btn-small btn-danger">
+                                  <i class="fa fa-trash"></i>
+                              </button>
+                          </form>
+                        </div>
+                          
                       </td>
                     </tr>
                 @endforeach
