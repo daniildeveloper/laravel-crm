@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateDealsTable extends Migration
+class CreateProposalStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateDealsTable extends Migration
      */
     public function up()
     {
-        Schema::create('deals', function (Blueprint $table) {
+        Schema::create('proposal_statuses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('client_id');
-            $table->text('deal');
-            $table->integer('deal_status');
+            $table->string('name');
+            $table->string('color');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateDealsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deals');
+        Schema::dropIfExists('proposal_statuses');
     }
 }
